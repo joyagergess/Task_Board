@@ -10,10 +10,13 @@ header {
   text-align: center;
   padding: 20px;
   background: #2c2c2c;
+  border-bottom: 2px solid #444;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 h1 {
-  color: white;
+  margin: 0 0 15px 0;
+  color: #ffffff;
 }
 
 .task-form {
@@ -23,41 +26,57 @@ h1 {
 }
 
 .task-form input {
-  width: 60%;
-  padding: 1%;
+  padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
+  width: 250px;
 }
 
 .task-form button {
-  width: 15%;
+  background: #4cafef;
   border: none;
   border-radius: 8px;
-  background: #4cafef;
+  padding: 0 15px;
   color: white;
+  font-size: 18px;
   cursor: pointer;
 }
 
-.task-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2%;
-  padding: 2%;
+.task-form button:hover {
+  background: #369fe0;
 }
 
-.task-card {
-  background: white;
-  color: black;
-  padding: 2%;
+.error {
+  color: red;
+  margin-top: 5px;
+}
+
+/* Filter Navbar */
+.filter-nav {
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
   border-radius: 8px;
-  position: relative;
+  overflow: hidden;
+  margin: 15px auto 0;
+  width: fit-content;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
 }
 
-.task-status {
-  width: 5%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  border-radius: 8px 0 0 8px;
+.filter-nav button {
+  background: transparent;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s;
+}
+
+.filter-nav button:hover {
+  background: #f0f0f0;
+}
+
+.filter-nav button.active {
+  background: #4cafef;
+  color: white;
 }
