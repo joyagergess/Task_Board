@@ -17,14 +17,24 @@ function displayTasks() {
 
     const statusBar = document.createElement("div");
     statusBar.className = "task-status";
-    statusBar.style.background = "orange";
+    statusBar.style.background = task.completed ? "green" : "orange";
 
     const taskText = document.createElement("p");
     taskText.className = "task-text";
     taskText.textContent = task.text;
+    if (task.completed) taskText.classList.add("completed");
 
     const actions = document.createElement("div");
     actions.className = "task-actions";
+
+    const toggleBtn = document.createElement("button");
+    toggleBtn.className = "toggle-btn";
+    toggleBtn.textContent = task.completed ? "Undo" : "Done";
+    toggleBtn.onclick = () => {
+      task.completed = !task.completed;
+      saveTasks();
+      displayTasks();
+    };
 
     const editBtn = document.createElement("button");
     editBtn.className = "edit-btn";
@@ -59,7 +69,7 @@ function displayTasks() {
       displayTasks();
     };
 
-    actions.append(editBtn, deleteBtn);
+    actions.append(toggleBtn, editBtn, deleteBtn);
     card.append(statusBar, taskText, actions);
     taskList.appendChild(card);
   });
