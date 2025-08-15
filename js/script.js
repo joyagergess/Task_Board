@@ -2,8 +2,10 @@ const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");
 const errorMsg = document.getElementById("errorMsg");
+const filterButtons = document.querySelectorAll(".filter-nav button");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let currentFilter = "all";
 
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -11,7 +13,11 @@ function saveTasks() {
 
 function displayTasks() {
   taskList.innerHTML = "";
+
   tasks.forEach((task, index) => {
+    if (currentFilter === "completed" && !task.completed) return;
+    if (currentFilter === "pending" && task.completed) return;
+
     const card = document.createElement("div");
     card.className = "task-card";
 
@@ -87,5 +93,14 @@ addTaskBtn.onclick = () => {
   saveTasks();
   displayTasks();
 };
+
+filterButtons.forEach(btn => {
+  btn.onclick = () => {
+    filterButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentFilter = btn.dataset.filter;
+    displayTasks();
+  };
+});
 
 displayTasks();
