@@ -7,10 +7,12 @@ const filterButtons = document.querySelectorAll(".filter-nav button");
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let currentFilter = "all";
 
+// Save tasks
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+// Show tasks
 function displayTasks() {
   taskList.innerHTML = "";
 
@@ -81,6 +83,7 @@ function displayTasks() {
   });
 }
 
+// Add task
 addTaskBtn.onclick = () => {
   const text = taskInput.value.trim();
   if (!text) {
@@ -94,6 +97,7 @@ addTaskBtn.onclick = () => {
   displayTasks();
 };
 
+// Filter
 filterButtons.forEach(btn => {
   btn.onclick = () => {
     filterButtons.forEach(b => b.classList.remove("active"));
