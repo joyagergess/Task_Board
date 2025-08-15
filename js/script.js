@@ -11,7 +11,7 @@ function saveTasks() {
 
 function displayTasks() {
   taskList.innerHTML = "";
-  tasks.forEach(task => {
+  tasks.forEach((task, index) => {
     const card = document.createElement("div");
     card.className = "task-card";
 
@@ -23,7 +23,20 @@ function displayTasks() {
     taskText.className = "task-text";
     taskText.textContent = task.text;
 
-    card.append(statusBar, taskText);
+    const actions = document.createElement("div");
+    actions.className = "task-actions";
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.className = "delete-btn";
+    deleteBtn.textContent = "Delete";
+    deleteBtn.onclick = () => {
+      tasks.splice(index, 1);
+      saveTasks();
+      displayTasks();
+    };
+
+    actions.append(deleteBtn);
+    card.append(statusBar, taskText, actions);
     taskList.appendChild(card);
   });
 }
