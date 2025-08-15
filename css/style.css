@@ -1,3 +1,4 @@
+
 body {
   font-family: "Segoe UI", sans-serif;
   background: #1f1f1f;
@@ -80,3 +81,61 @@ h1 {
   background: #4cafef;
   color: white;
 }
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 220px));
+  gap: 15px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.task-card {
+  background: white;
+  color: black;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 15px;
+  position: relative;
+}
+
+.task-status {
+  width: 10px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 10px 0 0 10px;
+}
+
+.task-text {
+  margin: 0 0 10px 0;
+}
+
+.task-text.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.task-actions {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-end;
+}
+
+.task-actions button {
+  flex: none;
+  min-width: 45px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0 8px;
+}
+
+.edit-btn { background: #ffb84c; }
+.delete-btn { background: #ff6b6b; color: white; }
+.save-btn { background: #4caf50; color: white; }
+.toggle-btn { background: #ddd; }
+
